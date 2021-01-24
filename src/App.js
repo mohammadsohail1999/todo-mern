@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+import { HomeScreen } from "./screens/HomeScreen";
+import AddTitleScreen from "./screens/AddTitleScreen";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Header } from "./components/Header";
+import AddToDosScreen from "./screens/AddToDosScreen";
+import Modal from "./components/Modal";
+
+const App = () => {
+
+  
+
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="ui container">
+      <BrowserRouter>
+        <Header />
+       
+
+        <Switch>
+          <Route path="/" exact component={HomeScreen} />
+          <Route path="/addTitle" exact component={AddTitleScreen} />
+
+          <Route path="/:id" exact component={AddToDosScreen} />
+          <Route path="/delete/:id" exact component={Modal}/>
+        
+        </Switch>
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
